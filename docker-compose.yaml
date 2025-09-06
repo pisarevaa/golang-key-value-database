@@ -1,0 +1,19 @@
+services:
+  key-value-database:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    env_file:
+      - ./.env
+    ports:
+      - "7000:7000"
+    environment:
+      - HOST=localhost:7000
+      - TOPICS
+    networks:
+      - key-value-database-network
+
+networks:
+  key-value-database-network:
+    driver: bridge
