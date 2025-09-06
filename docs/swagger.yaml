@@ -1,0 +1,72 @@
+definitions:
+  api.ErrorResponse:
+    properties:
+      error:
+        example: Invalid IP address
+        type: string
+    type: object
+host: localhost:7000
+info:
+  contact: {}
+  title: Swagger Key-value Database API
+  version: "1.0"
+paths:
+  /v1/key/{key}:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Delete value by key
+      tags:
+      - Database
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get value by key
+      tags:
+      - Database
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Set value by key
+      tags:
+      - Database
+swagger: "2.0"
